@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Andres Ravelo",
+    "classifications": [ "Common", "Library" ],
+    "identity": "UiPath.MultiProjectTemplate",
+    "name": "UiPath Template",
+    "shortName": "uipath-multiproject",
+    "tags": {
+      "language": "C#",
+      "type": "solution"
+    },
+    "sourceName": "ProjectName",
+    "preferNameDirectory": true,
+    "guids": [
+      "EE59ADC1-89E0-4F6C-935A-63F3A52D6D8D",
+      "5B6E7870-9E3C-4D41-A39C-A91C4500B40D",
+      "EA2F190B-3FB6-4D52-A532-07BFCC5A4C20",
+      "3E6B7A05-3870-4F2E-AA26-E77C3FFFCC32"
+    ],
+    "symbols": {
+      "ProjectName": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "MyProject"
+      }
+    },
+    "sources": [
+      {
+        "modifiers": [
+          {
+            "condition": "(ProjectName)",
+            "rename": {
+              "UiPath.Activities.ProjectName": "UiPath.Activities.ProjectName"
+            }
+          }
+        ]
+      }
+    ],
+    "primaryOutputs": [
+      {
+        "path": "UiPath.Activities.ProjectName"
+      },
+      {
+        "path": "UiPath.Activities.ProjectName.Packaging"
+      },
+      {
+        "path": "UiPath.Activities.ProjectName.Tests"
+      }
+    ]
+  }
