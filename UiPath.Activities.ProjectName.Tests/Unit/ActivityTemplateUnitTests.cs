@@ -1,14 +1,13 @@
 ﻿using Xunit;
 
-namespace UiPath.Activities.{{ProjectName}}.Tests.Tests.Workflow
+namespace UiPath.Activities.ProjectName.Tests.Unit
 {
-    public class ActivityTemplateWorkflowTests
+    public class ActivityTemplateUnitTests
     {
         [Fact]
         public void Test()
         {
             Assert.Equal(0, 0);
         }
-
     }
 }

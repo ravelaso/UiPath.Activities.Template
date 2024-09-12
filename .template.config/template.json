@@ -3,7 +3,7 @@
     "author": "Andres Ravelo",
     "classifications": [ "Common", "Library" ],
     "identity": "UiPath.MultiProjectTemplate",
-    "name": "Multi-Project Template",
+    "name": "UiPath Template",
     "shortName": "uipath-multiproject",
     "tags": {
       "language": "C#",
@@ -30,7 +30,7 @@
           {
             "condition": "(ProjectName)",
             "rename": {
-              "UiPath.Activities.ProjectName": "UiPath.Activities.{{ProjectName}}"
+              "UiPath.Activities.ProjectName": "UiPath.Activities.ProjectName"
             }
           }
         ]
@@ -38,13 +38,13 @@
     ],
     "primaryOutputs": [
       {
-        "path": "UiPath.Activities.{{ProjectName}}"
+        "path": "UiPath.Activities.ProjectName"
       },
       {
-        "path": "UiPath.Activities.{{ProjectName}}.Packaging"
+        "path": "UiPath.Activities.ProjectName.Packaging"
       },
       {
-        "path": "UiPath.Activities.{{ProjectName}}.Tests"
+        "path": "UiPath.Activities.ProjectName.Tests"
       }
     ]
   }

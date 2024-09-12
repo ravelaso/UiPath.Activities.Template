@@ -10,7 +10,7 @@
 
 using System;
 
-namespace UiPath.Activities.{{ProjectName}}
+namespace UiPath.Activities.ProjectName
 {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
@@ -44,7 +44,7 @@ namespace UiPath.Activities.{{ProjectName}}
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UiPath.Activities.{{ProjectName}}.Resources.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("UiPath.Activities.ProjectName.Resources.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

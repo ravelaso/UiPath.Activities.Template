@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPath.Activities.{{ProjectName}}", "UiPath.Activities.{{ProjectName}}\UiPath.Activities.{{ProjectName}}\UiPath.Activities.{{ProjectName}}.csproj", "{EE59ADC1-89E0-4F6C-935A-63F3A52D6D8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPath.Activities.ProjectName", "UiPath.Activities.ProjectName\UiPath.Activities.ProjectName\UiPath.Activities.ProjectName.csproj", "{EE59ADC1-89E0-4F6C-935A-63F3A52D6D8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPath.Activities.{{ProjectName}}.Packaging", "UiPath.Activities.{{ProjectName}}\UiPath.Activities.{{ProjectName}}.Packaging\UiPath.Activities.{{ProjectName}}.Packaging.csproj", "{5B6E7870-9E3C-4D41-A39C-A91C4500B40D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPath.Activities.ProjectName.Packaging", "UiPath.Activities.ProjectName\UiPath.Activities.ProjectName.Packaging\UiPath.Activities.ProjectName.Packaging.csproj", "{5B6E7870-9E3C-4D41-A39C-A91C4500B40D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPath.Activities.{{ProjectName}}.Tests", "UiPath.Activities.{{ProjectName}}\UiPath.Activities.{{ProjectName}}.Tests\UiPath.Activities.{{ProjectName}}.Tests.csproj", "{EA2F190B-3FB6-4D52-A532-07BFCC5A4C20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UiPath.Activities.ProjectName.Tests", "UiPath.Activities.ProjectName\UiPath.Activities.ProjectName.Tests\UiPath.Activities.ProjectName.Tests.csproj", "{EA2F190B-3FB6-4D52-A532-07BFCC5A4C20}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
