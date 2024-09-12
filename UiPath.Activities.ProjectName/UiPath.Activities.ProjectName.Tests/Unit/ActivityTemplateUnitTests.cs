@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace UiPath.Activities.ProjectName.Tests.Unit
+namespace UiPath.Activities.{{ProjectName}}.Tests.Unit
 {
     public class ActivityTemplateUnitTests
     {

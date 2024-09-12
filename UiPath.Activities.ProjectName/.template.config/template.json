@@ -4,7 +4,7 @@
     "classifications": [ "Common", "Library" ],
     "identity": "UiPath.MultiProjectTemplate",
     "name": "Multi-Project Template",
-    "shortName": "multi-project",
+    "shortName": "uipath-multiproject",
     "tags": {
       "language": "C#",
       "type": "solution"

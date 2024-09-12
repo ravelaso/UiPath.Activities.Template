@@ -1,7 +1,7 @@
 ﻿using System.Activities;
 using System.Diagnostics;
 
-namespace UiPath.Activities.ProjectName
+namespace UiPath.Activities.{{ProjectName}}
 {
     public class ActivityTemplate : CodeActivity // This base class exposes an OutArgument named Result
     {
