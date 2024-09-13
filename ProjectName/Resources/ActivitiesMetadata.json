@@ -1,0 +1,13 @@
+{
+  "resourceManagerName": "ProjectName.Resources.Resources",
+  "activities": [
+    {
+      "fullName": "ProjectName.ActivityTemplate",
+      "shortName": "Template",
+      "displayNameKey": "ActivityTemplate_DisplayName",
+      "descriptionKey": "ActivityTemplate_Description",
+      "categoryKey": "Templates",
+      "viewModelType": "ProjectName.ViewModels.ActivityTemplateViewModel"
+    }
+  ]
+}

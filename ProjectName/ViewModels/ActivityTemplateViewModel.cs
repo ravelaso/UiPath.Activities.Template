@@ -1,6 +1,6 @@
 ﻿using System.Activities.DesignViewModels;
 
-namespace UiPath.Activities.ProjectName.ViewModels
+namespace ProjectName.ViewModels
 {
     public class ActivityTemplateViewModel : DesignPropertiesViewModel
     {

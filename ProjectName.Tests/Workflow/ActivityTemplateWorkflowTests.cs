@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace UiPath.Activities.ProjectName.Tests.Tests.Workflow
+namespace ProjectName.Tests.Workflow
 {
     public class ActivityTemplateWorkflowTests
     {
