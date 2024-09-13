@@ -1,14 +1,16 @@
 name: Publish Nuget Template
 
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
     types:
-    - closed
-    branches: [ "main" ]
+      - closed
+    branches: ["main"]
 jobs:
-  publish:
+  if_merged:
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
-
     steps:
       - name: Install xmllint
         run: sudo apt-get install -y libxml2-utils
