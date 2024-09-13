@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\UiPath.Activities.ProjectName\UiPath.Activities.ProjectName.csproj" />
+    <ProjectReference Include="..\ProjectName\ProjectName.csproj" />
   </ItemGroup>
 
 </Project>
