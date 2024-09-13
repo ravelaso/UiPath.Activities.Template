@@ -54,7 +54,14 @@
           }
         }
       ],
-      "exclude": [".git/**", ".template.config/**"]
+      "exclude": [
+        ".git/**",
+        ".template.config/**",
+        "Ravelaso.UiPath.Template.nuspec",
+        "LICENSE.md",
+        "README.md",
+        ".github/**"
+      ]
     }
   ],
   "primaryOutputs": [

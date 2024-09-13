@@ -5,11 +5,16 @@
     <version>1.0.2</version>
     <authors>Andres Ravelo</authors>
     <owners>Andres Ravelo</owners>
+    <projectUrl>https://github.com/ravelaso/UiPath.Activities.Template</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A multi-project template for UiPath activities ported from original VisualStudio template.</description>
     <tags>template;uipath;multi-project</tags>
+    <readme>docs\README.md</readme>
+    <license type="file">docs\LICENSE.md</license>
   </metadata>
   <files>
     <file src="**\*" target="content" />
+    <file src="LICENSE.md" target="docs\" />
+    <file src="README.md" target="docs\" />
   </files>
 </package>
