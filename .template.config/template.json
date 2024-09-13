@@ -3,7 +3,7 @@
   "author": "Andres Ravelo",
   "classifications": ["Common", "Library", "UiPath"],
   "identity": "Ravelaso.UiPath.Template",
-  "name": "UiPath Template",
+  "name": "Ravelaso UiPath Template",
   "shortName": "ravelaso-uipath-template",
   "tags": {
     "language": "C#",
