@@ -5,7 +5,6 @@
   "identity": "Ravelaso.UiPath.Template",
   "name": "UiPath Template",
   "shortName": "ravelaso-uipath-template",
-  "version": "1.0.2",
   "tags": {
     "language": "C#",
     "type": "project"
