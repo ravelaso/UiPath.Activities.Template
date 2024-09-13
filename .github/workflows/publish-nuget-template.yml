@@ -2,11 +2,11 @@ name: Publish Nuget Template
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
     types:
       - closed
-    branches: ["main"]
+    branches: ["master"]
 jobs:
   if_merged:
     if: github.event.pull_request.merged == true || github.event_name == 'push'
