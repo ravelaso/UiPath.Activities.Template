@@ -1,9 +1,10 @@
 name: Publish Nuget Template
 
 on:
-  push:
+  pull_request:
+    types:
+    - closed
     branches: [ "main" ]
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -11,7 +12,7 @@ jobs:
     steps:
       - name: Install xmllint
         run: sudo apt-get install -y libxml2-utils
-        
+
       - uses: actions/checkout@v3
       
       - uses: nuget/setup-nuget@v1
