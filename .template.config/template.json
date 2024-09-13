@@ -5,10 +5,10 @@
   "identity": "UiPath.MultiProjectTemplate",
   "name": "UiPath Template",
   "shortName": "uipath-template",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "tags": {
     "language": "C#",
-    "type": "solution"
+    "type": "project"
   },
   "sourceName": "ProjectName",
   "preferNameDirectory": true,
@@ -47,11 +47,13 @@
         {
           "condition": "(ProjectName)",
           "rename": {
-            "UiPath.Activities.ProjectName": "ProjectName"
+            "ProjectName": "ProjectName",
+            "ProjectName.Packaging": "ProjectName.Packaging",
+            "ProjectName.Tests": "ProjectName.Tests"
           }
         }
       ],
-      "exclude": [".git/**"]
+      "exclude": [".git/**", ".template.config/**"]
     }
   ],
   "primaryOutputs": [
