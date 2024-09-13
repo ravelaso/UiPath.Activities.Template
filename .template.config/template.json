@@ -37,6 +37,7 @@
           "description": "Target .NET 8.0"
         }
       ],
+      "replaces": "FameworkParameter",
       "defaultValue": "net6.0",
       "description": "The target framework for the project."
     }

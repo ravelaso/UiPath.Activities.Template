@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>{{TargetFramework}}</TargetFramework>
+    <TargetFramework>FameworkParameter</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
 	<PackageId>ProjectName.Activities</PackageId>
   </PropertyGroup>
