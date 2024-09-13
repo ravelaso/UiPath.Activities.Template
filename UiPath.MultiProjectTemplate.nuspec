@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Ravelaso.UiPath.Template</id>
+    <version>1.0.2</version>
+    <authors>Andres Ravelo</authors>
+    <owners>Andres Ravelo</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A multi-project template for UiPath activities ported from original VisualStudio template.</description>
+    <tags>template;uipath;multi-project</tags>
+  </metadata>
+  <files>
+    <file src="**\*" target="content" />
+  </files>
+</package>

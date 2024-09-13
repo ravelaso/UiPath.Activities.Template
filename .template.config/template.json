@@ -2,9 +2,9 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "Andres Ravelo",
   "classifications": ["Common", "Library", "UiPath"],
-  "identity": "UiPath.MultiProjectTemplate",
+  "identity": "Ravelaso.UiPath.Template",
   "name": "UiPath Template",
-  "shortName": "uipath-template",
+  "shortName": "ravelaso-uipath-template",
   "version": "1.0.2",
   "tags": {
     "language": "C#",
