@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>TargetFramework</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-	<PackageId>UiPath.Activities.ProjectName.Activities</PackageId>
+	<PackageId>ProjectName.Activities</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,7 +26,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <CustomToolNamespace>UiPath.Activities.ProjectName</CustomToolNamespace>
+      <CustomToolNamespace>ProjectName</CustomToolNamespace>
     </Compile>
   </ItemGroup>
 
@@ -34,7 +34,7 @@
     <EmbeddedResource Update="Resources\Resources.resx">
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <CustomToolNamespace>UiPath.Activities.ProjectName</CustomToolNamespace>
+      <CustomToolNamespace>ProjectName</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
 
