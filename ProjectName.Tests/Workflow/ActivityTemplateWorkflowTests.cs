@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace ProjectName.Tests.Tests.Workflow
+namespace ProjectName.Tests.Workflow
 {
     public class ActivityTemplateWorkflowTests
     {
