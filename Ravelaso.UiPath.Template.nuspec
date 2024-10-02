@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Ravelaso.UiPath.Template</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <authors>Andres Ravelo</authors>
     <owners>Andres Ravelo</owners>
     <projectUrl>https://github.com/ravelaso/UiPath.Activities.Template</projectUrl>
@@ -13,7 +13,9 @@
     <license type="file">docs\LICENSE.md</license>
   </metadata>
   <files>
-    <file src="**\*" target="content" />
+    <file src="ProjectName\*" target="content" />
+    <file src="ProjectName.Packaging\*" target="content" />
+    <file src="ProjectName.Tests\*" target="content" />
     <file src="LICENSE.md" target="docs\" />
     <file src="README.md" target="docs\" />
   </files>
