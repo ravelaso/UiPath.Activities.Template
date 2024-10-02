@@ -13,9 +13,7 @@
     <license type="file">docs\LICENSE.md</license>
   </metadata>
   <files>
-    <file src="ProjectName\*" target="content" />
-    <file src="ProjectName.Packaging\*" target="content" />
-    <file src="ProjectName.Tests\*" target="content" />
+    <file src="**\*" target="content" />
     <file src="LICENSE.md" target="docs\" />
     <file src="README.md" target="docs\" />
   </files>
