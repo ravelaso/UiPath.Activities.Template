@@ -15,7 +15,7 @@
   </metadata>
   <files>
     <file src="**\*" target="content" />
-    <file src="UI_icon.png" target="images\"
+    <file src="UI_icon.png" target="images\">
     <file src="LICENSE.md" target="docs\" />
     <file src="README.md" target="docs\" />
   </files>
