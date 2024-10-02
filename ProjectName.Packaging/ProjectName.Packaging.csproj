@@ -16,7 +16,7 @@
 		<Authors>UiPath</Authors>
 		<PackageTags>UiPathActivities</PackageTags>
 		<Product>ProjectName.Packaging</Product>
-		<PackageIconUrl>https://download.uipath.com/UI_icon.png?web</PackageIconUrl>
+		<PackageIcon>UI_icon.png</PackageIcon>
 		<PackageOutputPath>..\Output\Activities\Packages\</PackageOutputPath>
 		<TargetsForTfmSpecificBuildOutput>AddDlls</TargetsForTfmSpecificBuildOutput>
 		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
@@ -50,5 +50,6 @@
 		<ProjectReference Include="..\ProjectName\ProjectName.csproj">
 			<PrivateAssets>All</PrivateAssets>
 		</ProjectReference>
+		<None Include="images\UI_icon.png" Pack="true" PackagePath="" />
 	</ItemGroup>
 </Project>
