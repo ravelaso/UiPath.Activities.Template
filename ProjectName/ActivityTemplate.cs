@@ -13,7 +13,7 @@ namespace ProjectName
             return ExecuteInternal();
         }
 
-        public int ExecuteInternal()
+        private int ExecuteInternal()
         {
             // use this to automatically attach the debugger to the process
             //Debugger.Launch();
