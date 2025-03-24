@@ -48,6 +48,9 @@
           }
         }
       ],
+      "include": [
+        ".gitignore"
+      ],
       "exclude": [
         ".git/**",
         ".template.config/**",

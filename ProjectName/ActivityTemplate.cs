@@ -1,5 +1,6 @@
 ﻿using System.Activities;
 using System.Diagnostics;
+using Test.Activity.Code.Helpers;
 using UiPath.Robot.Activities.Api;
 
 namespace ProjectName;
@@ -11,7 +12,7 @@ public class ActivityTemplate : CodeActivity<int> // This base class exposes an 
      */
 
     [RequiredArgument]
-    public InArgument<int>? FirstNumber { get; set; } //InArgument allows a variable to be set from the workflow
+    public InArgument<int> FirstNumber { get; set; } //InArgument allows a variable to be set from the workflow
 
     [RequiredArgument]
     public InArgument<int> SecondNumber { get; set; } //InArgument allows a variable to be set from the workflow
