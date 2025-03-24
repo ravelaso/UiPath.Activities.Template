@@ -11,7 +11,7 @@ on:
 jobs:
   if_merged:
     if: github.event.pull_request.merged == true || github.event_name == 'push'
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -32,7 +32,7 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Pack project
-        run: dotnet pack Ravelaso.UiPath.Template.nuspec --configuration Release --output Output/Activities/Packages
+        run: nuget pack Ravelaso.UiPath.Template.nuspec -version 1.1.1
 
       - name: Publish package
-        run: dotnet nuget push Output/Activities/Packages/*.nupkg --source 'https://api.nuget.org/v3/index.json' --api-key ${{ secrets.NUGET_API_KEY }}
+        run: nuget push Output/Activities/Packages/*.nupkg --source 'https://api.nuget.org/v3/index.json' --api-key ${{ secrets.NUGET_API_KEY }}
