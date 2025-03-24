@@ -7,29 +7,32 @@ on:
     types:
       - closed
     branches: ["master"]
+
 jobs:
   if_merged:
     if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - name: Install xmllint
-        run: sudo apt-get install -y libxml2-utils
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - uses: actions/checkout@v3
-      
-      - uses: nuget/setup-nuget@v1
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
         with:
-          nuget-version: '6.x'
+          dotnet-version: '6.x'
 
-      - name: Get version number from .nuspec
-        id: version
+      - name: Configure NuGet sources
         run: |
-          VERSION=$(xmllint --xpath "string(//package/metadata/version)" Ravelaso.UiPath.Template.nuspec)
-          echo "VERSION=$VERSION"
-          echo "::set-output name=version::$VERSION"
+          dotnet nuget add source https://pkgs.dev.azure.com/uipath/Public.Feeds/_packaging/UiPath-Official/nuget/v3/index.json -n UiPath-Official
 
-      - name: Create package
-        run: nuget pack Ravelaso.UiPath.Template.nuspec -version ${{ steps.version.outputs.version }}
+      - name: Restore dependencies
+        run: dotnet restore
         
+      - name: Build project
+        run: dotnet build --configuration Release
+
+      - name: Pack project
+        run: dotnet pack Ravelaso.UiPath.Template.nuspec --configuration Release --output Output/Activities/Packages
+
       - name: Publish package
-        run: nuget push *.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+        run: dotnet nuget push Output/Activities/Packages/*.nupkg --source 'https://api.nuget.org/v3/index.json' --api-key ${{ secrets.NUGET_API_KEY }}
