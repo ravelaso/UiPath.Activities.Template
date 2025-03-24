@@ -18,11 +18,6 @@
     "3E6B7A05-3870-4F2E-AA26-E77C3FFFCC32"
   ],
   "symbols": {
-    "ProjectName": {
-      "type": "parameter",
-      "datatype": "string",
-      "defaultValue": "CoolProject"
-    },
     "TargetFramework": {
       "type": "parameter",
       "datatype": "choice",
@@ -57,8 +52,10 @@
         ".git/**",
         ".template.config/**",
         "Ravelaso.UiPath.Template.nuspec",
+        "ProjectName.sln",
         "LICENSE.md",
         "README.md",
+        "UI_icon.png",
         ".github/**"
       ]
     }
