@@ -53,14 +53,10 @@
           }
         }
       ],
-      "include": [
-        ".gitignore"
-      ],
       "exclude": [
         ".git/**",
         ".template.config/**",
         "Ravelaso.UiPath.Template.nuspec",
-        "ProjectName.sln",
         "LICENSE.md",
         "README.md",
         "UI_icon.png",
