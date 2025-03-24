@@ -3,10 +3,10 @@
   "activities": [
     {
       "fullName": "ProjectName.ActivityTemplate",
-      "shortName": "Template",
+      "shortName": "ExampleActivity",
       "displayNameKey": "ActivityTemplate_DisplayName",
       "descriptionKey": "ActivityTemplate_Description",
-      "categoryKey": "Templates",
+      "categoryKey": "Examples",
       "viewModelType": "ProjectName.ViewModels.ActivityTemplateViewModel"
     }
   ]
