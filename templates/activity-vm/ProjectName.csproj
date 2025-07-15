@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>FameworkParameter</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<PackageId>ProjectName.Activities</PackageId>
+  <VersionBuild>$([System.DateTime]::UtcNow.DayOfYear.ToString("F0"))</VersionBuild>
+	<VersionRevision>$([System.DateTime]::UtcNow.TimeOfDay.TotalMinutes.ToString("F0"))</VersionRevision>
+	<VersionPrefix Condition="'$(Configuration)' == 'Release'">1.0.0</VersionPrefix>
+	<VersionPrefix Condition="'$(Configuration)' == 'Debug'">1.0.$(VersionBuild)-dev.$(VersionRevision)</VersionPrefix>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\ActivitiesMetadata.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ActivitiesMetadata.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Activities.ViewModels" Version="1.0.0-20250124.2" />
+    <PackageReference Include="UiPath.Activities.Api" Version="24.10.1" PrivateAssets="All" />
+    <PackageReference Include="UiPath.Workflow" Version="6.0.0-20240401-07" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <CustomToolNamespace>ProjectName</CustomToolNamespace>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Resources.resx">
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <CustomToolNamespace>ProjectName</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Icons\" />
+  </ItemGroup>
+
+</Project>

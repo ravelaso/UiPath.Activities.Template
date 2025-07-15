@@ -37,9 +37,5 @@
       <CustomToolNamespace>ProjectName</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\Icons\" />
-  </ItemGroup>
-
+  
 </Project>
