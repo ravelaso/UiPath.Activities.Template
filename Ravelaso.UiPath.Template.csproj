@@ -18,10 +18,14 @@
     <PackageType>Template</PackageType>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Template files -->
+    <!-- Exclude template files from compilation but include them in the package -->
+    <Compile Remove="templates\**\*" />
     <Content Include="templates\**\*" Pack="true" PackagePath="content\" />
     
     <!-- Package assets -->
