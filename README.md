@@ -3,7 +3,7 @@
 A multi-project template for UiPath activities ported from the original VisualStudio template.
 
 
-## New in v2.1.0
+## New in v2.1.3
 
 New documentation added on how to create your activity and explaining the templates in this repo.
 Templates now contain an optional **Examples parameter** if you want to see a **Calculator example**.
