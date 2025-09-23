@@ -35,5 +35,47 @@
       "defaultValue": "false",
       "description": "Include example code in the generated project."
     }
-  }
+  },
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "condition": "Examples == 'false'",
+      "exclude": [
+        "examples"
+      ],
+      "include": [
+        "Activity.cs",
+        "Resources/**/*",
+        "ViewModels/ActivityViewModel.cs"
+      ]
+    },
+    {
+      "source": "./examples",
+      "target": "./",
+      "condition": "Examples == 'true'",
+      "include": [
+        "**/*"
+      ]
+    },
+    {
+      "source": "./Helpers",
+      "target": "./Helpers",
+      "include": [
+        "**/*"
+      ]
+    },
+    {
+      "source": "./",
+      "target": "./",
+      "include": [
+        "ProjectName.csproj"
+      ],
+      "exclude": [
+        "examples",
+        "ViewModels",
+        "Resources"
+      ]
+    }
+  ]
 }

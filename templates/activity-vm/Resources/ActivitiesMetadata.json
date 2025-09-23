@@ -1,13 +1,8 @@
 {
-  "resourceManagerName": "ProjectName.Resources.Resources",
   "activities": [
     {
-      "fullName": "ProjectName.CalculatorActivity",
-      "shortName": "CalculatorActivity",
-      "displayName": "Calculator Activity",
-      "description": "This is an example activity",
-      "categoryKey": "Examples",
-      "viewModelType": "ProjectName.ViewModels.CalculatorActivityViewModel"
+      "fullName": "ProjectName.Activity",
+      "viewModelType": "ProjectName.ViewModels.ActivityViewModel"
     }
   ]
 }
