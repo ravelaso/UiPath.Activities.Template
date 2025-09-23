@@ -12,11 +12,6 @@
   "sourceName": "ProjectName",
   "preferNameDirectory": true,
   "symbols": {
-    "ProjectName": {
-      "type": "parameter",
-      "datatype": "string",
-      "defaultValue": "ProjectName"
-    },
     "TargetFramework": {
       "type": "parameter",
       "datatype": "choice",

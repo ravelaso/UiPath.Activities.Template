@@ -1,6 +1,7 @@
 ﻿using Xunit;
+using System.Activities;
 
-namespace ProjectName.Tests.Unit
+namespace ProjectName.Tests
 {
     public class ActivityTemplateTests
     {

@@ -35,16 +35,10 @@ public class ActivityTemplate : CodeActivity<int> // This base class exposes an 
 
     protected override int Execute(CodeActivityContext context)
     {
-        // This is how you can log messages from your activity. logs are sent to the Robot which will forward them to Orchestrator
-        var message = new LogMessage
-        {
-            EventType = TraceEventType.Information,
-            Message = "Executing Calculator activity"
-        };
-        context.GetExecutorRuntime().LogMessage(message);
-
-        var firstNumber = FirstNumber.Get(context); //get the value from the workflow context (remember, this can be a variable)
+        //Get the values from the workflow context 
+        var firstNumber = FirstNumber.Get(context); 
         var secondNumber = SecondNumber.Get(context);
+        
         // You can do validations before you actually run the private method.
         if (secondNumber == 0 && SelectedOperation == Operation.Divide)
         {
