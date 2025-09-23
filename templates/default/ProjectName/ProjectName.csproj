@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\ActivitiesMetadata.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Include="Resources\ActivitiesMetadata.json" />
   </ItemGroup>
 
@@ -21,21 +17,4 @@
     <PackageReference Include="UiPath.Workflow" Version="6.0.0-20240401-07" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Resources\Resources.Designer.cs">
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <CustomToolNamespace>ProjectName</CustomToolNamespace>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\Resources.resx">
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <CustomToolNamespace>ProjectName</CustomToolNamespace>
-    </EmbeddedResource>
-  </ItemGroup>
-  
 </Project>
