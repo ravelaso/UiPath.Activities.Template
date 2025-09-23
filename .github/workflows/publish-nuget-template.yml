@@ -22,32 +22,38 @@ jobs:
         with:
           dotnet-version: '6.x'
           
-      - name: Get version from .nuspec
+      - name: Get version from project file
         id: version
-        shell: pwsh
         run: |
-          [xml]$nuspec = Get-Content "Ravelaso.UiPath.Template.nuspec"
-          $version = $nuspec.package.metadata.version
-          if (-not $version) {
-            throw "Could not extract version from .nuspec file"
-          }
-          Write-Host "Extracted version: $version"
-          echo "version=$version" >> $env:GITHUB_OUTPUT
+          VERSION=$(grep -oP '<PackageVersion>\K[^<]+' Ravelaso.UiPath.Template.csproj)
+          if [ -z "$VERSION" ]; then
+            echo "Error: Could not extract version from .csproj file"
+            exit 1
+          fi
+          echo "Extracted version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
           
       - name: Validate required files
         run: |
           echo "Checking required files exist..."
-          test -f "Ravelaso.UiPath.Template.nuspec" || (echo "Error: .nuspec file not found" && exit 1)
+          test -f "Ravelaso.UiPath.Template.csproj" || (echo "Error: .csproj file not found" && exit 1)
           test -f "UI_icon.png" || (echo "Error: UI_icon.png not found" && exit 1)
           test -f "LICENSE.md" || (echo "Error: LICENSE.md not found" && exit 1)
           test -f "README.md" || (echo "Error: README.md not found" && exit 1)
           test -d "templates" || (echo "Error: templates directory not found" && exit 1)
           echo "All required files found ✓"
           
+      - name: Restore dependencies
+        run: dotnet restore Ravelaso.UiPath.Template.csproj
+        
       - name: Create NuGet package
         run: |
           echo "Creating NuGet package for version ${{ steps.version.outputs.version }}"
-          dotnet pack Ravelaso.UiPath.Template.nuspec --configuration Release --output ./packages -p:PackageVersion=${{ steps.version.outputs.version }}
+          dotnet pack Ravelaso.UiPath.Template.csproj \
+            --configuration Release \
+            --output ./packages \
+            --no-restore \
+            -p:PackageVersion=${{ steps.version.outputs.version }}
           
       - name: List generated packages
         run: |
@@ -58,11 +64,12 @@ jobs:
         id: check-package
         continue-on-error: true
         run: |
-          PACKAGE_EXISTS=$(curl -s "https://api.nuget.org/v3-flatcontainer/ravelaso.uipath.template/${{ steps.version.outputs.version }}/ravelaso.uipath.template.nuspec" | grep -q "version" && echo "true" || echo "false")
-          echo "exists=$PACKAGE_EXISTS" >> $GITHUB_OUTPUT
-          if [ "$PACKAGE_EXISTS" = "true" ]; then
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.nuget.org/v3-flatcontainer/ravelaso.uipath.template/${{ steps.version.outputs.version }}/ravelaso.uipath.template.nuspec")
+          if [ "$RESPONSE" = "200" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
             echo "⚠️ Package version ${{ steps.version.outputs.version }} already exists on NuGet"
           else
+            echo "exists=false" >> $GITHUB_OUTPUT
             echo "✓ Package version ${{ steps.version.outputs.version }} is new"
           fi
           
@@ -73,8 +80,7 @@ jobs:
           dotnet nuget push "./packages/*.nupkg" \
             --source "https://api.nuget.org/v3/index.json" \
             --api-key "${{ secrets.NUGET_API_KEY }}" \
-            --skip-duplicate \
-            --no-symbols
+            --skip-duplicate
             
       - name: Skip publishing (package exists)
         if: steps.check-package.outputs.exists == 'true'
@@ -83,12 +89,10 @@ jobs:
           
       - name: Create GitHub release
         if: github.event_name == 'push' && steps.check-package.outputs.exists != 'true'
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ steps.version.outputs.version }}
-          release_name: Release v${{ steps.version.outputs.version }}
+          name: Release v${{ steps.version.outputs.version }}
           body: |
             ## UiPath Template Release v${{ steps.version.outputs.version }}
             
@@ -110,6 +114,7 @@ jobs:
             - [Project Repository](https://github.com/ravelaso/UiPath.Activities.Template)
           draft: false
           prerelease: false
+          files: ./packages/*.nupkg
           
       - name: Summary
         run: |

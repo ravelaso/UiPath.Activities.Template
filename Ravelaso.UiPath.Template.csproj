@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>Ravelaso.UiPath.Template</PackageId>
+    <PackageVersion>2.1.1</PackageVersion>
+    <Title>UiPath Activities Template</Title>
+    <Authors>Andres Ravelo (@ravelaso)</Authors>
+    <Owners>Andres Ravelo</Owners>
+    <Description>A multi-project template for UiPath activities ported from original VisualStudio template.</Description>
+    <PackageTags>template;uipath;multi-project</PackageTags>
+    <PackageProjectUrl>https://github.com/ravelaso/UiPath.Activities.Template</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>UI_icon.png</PackageIcon>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <IncludeSymbols>false</IncludeSymbols>
+    <PackageType>Template</PackageType>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Template files -->
+    <Content Include="templates\**\*" Pack="true" PackagePath="content\" />
+    
+    <!-- Package assets -->
+    <None Include="UI_icon.png" Pack="true" PackagePath="images\" />
+    <None Include="LICENSE.md" Pack="true" PackagePath="docs\" />
+    <None Include="README.md" Pack="true" PackagePath="docs\" />
+  </ItemGroup>
+
+</Project>
