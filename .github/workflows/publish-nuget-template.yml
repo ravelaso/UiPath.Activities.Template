@@ -1,4 +1,4 @@
-name: Publish NuGet Template
+name: Publish Nuget Template
 
 on:
   push:
@@ -6,125 +6,33 @@ on:
   pull_request:
     types:
       - closed
-    branches: [ "master" ]
-
+    branches: ["master"]
 jobs:
-  publish-nuget:
+  if_merged:
     if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+      - name: Update
+        run: sudo apt update
+
+      - name: Install xmllint & mono
+        run: sudo apt install -y libxml2-utils mono-complete --fix-missing
+
+      - uses: actions/checkout@v3
+      
+      - uses: nuget/setup-nuget@v1
         with:
-          dotnet-version: '6.x'
-          
-      - name: Get version from project file
+          nuget-version: '6.x'
+
+      - name: Get version number from .nuspec
         id: version
         run: |
-          VERSION=$(grep -oP '<PackageVersion>\K[^<]+' Ravelaso.UiPath.Template.csproj)
-          if [ -z "$VERSION" ]; then
-            echo "Error: Could not extract version from .csproj file"
-            exit 1
-          fi
-          echo "Extracted version: $VERSION"
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          
-      - name: Validate required files
-        run: |
-          echo "Checking required files exist..."
-          test -f "Ravelaso.UiPath.Template.csproj" || (echo "Error: .csproj file not found" && exit 1)
-          test -f "UI_icon.png" || (echo "Error: UI_icon.png not found" && exit 1)
-          test -f "LICENSE.md" || (echo "Error: LICENSE.md not found" && exit 1)
-          test -f "README.md" || (echo "Error: README.md not found" && exit 1)
-          test -d "templates" || (echo "Error: templates directory not found" && exit 1)
-          echo "All required files found ✓"
-          
-      - name: Create NuGet package
-        run: |
-          echo "Creating NuGet package for version ${{ steps.version.outputs.version }}"
-          dotnet pack Ravelaso.UiPath.Template.csproj \
-            --configuration Release \
-            --output ./packages \
-            -p:PackageVersion=${{ steps.version.outputs.version }}
-          
-      - name: List generated packages
-        run: |
-          echo "Generated packages:"
-          ls -la ./packages/
-          
-      - name: Check if package already exists on NuGet
-        id: check-package
-        continue-on-error: true
-        run: |
-          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" "https://api.nuget.org/v3-flatcontainer/ravelaso.uipath.template/${{ steps.version.outputs.version }}/ravelaso.uipath.template.nuspec")
-          if [ "$RESPONSE" = "200" ]; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-            echo "⚠️ Package version ${{ steps.version.outputs.version }} already exists on NuGet"
-          else
-            echo "exists=false" >> $GITHUB_OUTPUT
-            echo "✓ Package version ${{ steps.version.outputs.version }} is new"
-          fi
-          
-      - name: Publish to NuGet
-        if: steps.check-package.outputs.exists != 'true'
-        run: |
-          echo "Publishing package to NuGet..."
-          dotnet nuget push "./packages/*.nupkg" \
-            --source "https://api.nuget.org/v3/index.json" \
-            --api-key "${{ secrets.NUGET_API_KEY }}" \
-            --skip-duplicate
-            
-      - name: Skip publishing (package exists)
-        if: steps.check-package.outputs.exists == 'true'
-        run: |
-          echo "⏭️ Skipping publish - package version ${{ steps.version.outputs.version }} already exists on NuGet"
-          
-      - name: Create GitHub release
-        if: github.event_name == 'push' && steps.check-package.outputs.exists != 'true'
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: v${{ steps.version.outputs.version }}
-          name: Release v${{ steps.version.outputs.version }}
-          body: |
-            ## UiPath Template Release v${{ steps.version.outputs.version }}
-            
-            ### Package Details
-            - **Package ID**: Ravelaso.UiPath.Template
-            - **Version**: ${{ steps.version.outputs.version }}
-            - **Author**: Andres Ravelo (@ravelaso)
-            
-            ### Description
-            A multi-project template for UiPath activities ported from original VisualStudio template.
-            
-            ### Installation
-            ```bash
-            dotnet new install Ravelaso.UiPath.Template::${{ steps.version.outputs.version }}
-            ```
-            
-            ### Links
-            - [NuGet Package](https://www.nuget.org/packages/Ravelaso.UiPath.Template/${{ steps.version.outputs.version }})
-            - [Project Repository](https://github.com/ravelaso/UiPath.Activities.Template)
-          draft: false
-          prerelease: false
-          files: ./packages/*.nupkg
-          
-      - name: Summary
-        run: |
-          echo "## Workflow Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Package**: Ravelaso.UiPath.Template" >> $GITHUB_STEP_SUMMARY
-          echo "- **Version**: ${{ steps.version.outputs.version }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Action**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.check-package.outputs.exists }}" = "true" ]; then
-            echo "- **Result**: ⏭️ Skipped (version already exists)" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "- **Result**: ✅ Published successfully" >> $GITHUB_STEP_SUMMARY
-          fi
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Package Links" >> $GITHUB_STEP_SUMMARY
-          echo "- [NuGet Package](https://www.nuget.org/packages/Ravelaso.UiPath.Template/${{ steps.version.outputs.version }})" >> $GITHUB_STEP_SUMMARY
-          echo "- [GitHub Release](https://github.com/${{ github.repository }}/releases/tag/v${{ steps.version.outputs.version }})" >> $GITHUB_STEP_SUMMARY
+          VERSION=$(xmllint --xpath "string(//package/metadata/version)" Ravelaso.UiPath.Template.nuspec)
+          echo "VERSION=$VERSION"
+          echo "::set-output name=version::$VERSION"
+
+      - name: Create package
+        run: nuget pack Ravelaso.UiPath.Template.nuspec -version ${{ steps.version.outputs.version }}
+        
+      - name: Publish package
+        run: nuget push *.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
