@@ -28,6 +28,12 @@
       "replaces": "FameworkParameter",
       "defaultValue": "net6.0",
       "description": "The target framework for the project."
+    },
+    "Examples": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "Include example code in the generated project."
     }
   }
 }
