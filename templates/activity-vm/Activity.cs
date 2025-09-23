@@ -1,4 +1,5 @@
 using System.Activities;
+using System.ComponentModel;
 
 namespace ProjectName;
 
@@ -9,7 +10,7 @@ public class Activity : CodeActivity
 {
    // Define argument properties
 
-    protected override int Execute(CodeActivityContext context)
+    protected override void Execute(CodeActivityContext context)
     {
         // Do something
     }
