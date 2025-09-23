@@ -49,8 +49,6 @@ jobs:
           dotnet pack Ravelaso.UiPath.Template.csproj \
             --configuration Release \
             --output ./packages \
-            --no-build \
-            --no-restore \
             -p:PackageVersion=${{ steps.version.outputs.version }}
           
       - name: List generated packages
