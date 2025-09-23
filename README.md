@@ -64,7 +64,7 @@ To install .NET the **`PRO`** way:
 
 5. Select PATH, then click Edit, in the new window, click New and add the path to `C:\Users\%USERNAME%\.dotnet` (changing %USERNAME% to your username), then OK, or Save or Accept...
 
-    ![Path](path.png)
+    ![Path](path.jpeg)
 
 6. Open a terminal and run the command, ```dotnet --info```, a lot of information will show about dotnet being installed.
 
