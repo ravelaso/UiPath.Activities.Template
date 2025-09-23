@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update
-        run: sudo apt-update && apt-upgrade
+        run: sudo apt update
 
       - name: Install xmllint & mono
-        run: sudo apt-get install -y libxml2-utils mono-complete --fix-missing
+        run: sudo apt install -y libxml2-utils mono-complete --fix-missing
 
       - uses: actions/checkout@v3
       
