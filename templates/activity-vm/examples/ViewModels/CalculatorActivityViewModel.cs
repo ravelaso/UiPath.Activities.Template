@@ -26,7 +26,6 @@ namespace ProjectName.ViewModels
 
         protected override void InitializeModel()
         {
-             Debugger.Break();
             /*
              * The base call will initialize the properties of the view model with the values from the xaml or with the default values from the activity
              */
@@ -45,7 +44,7 @@ namespace ProjectName.ViewModels
             FirstNumber.Tooltip = "First number for the operation";
             FirstNumber.IsRequired = true;
             FirstNumber.IsPrincipal = true; // specifies if it belongs to the main category (which cannot be collapsed)
-           
+
             SecondNumber.DisplayName = "Second Number";
             SecondNumber.Tooltip = "Second number for the operation";
             SecondNumber.IsRequired = true;

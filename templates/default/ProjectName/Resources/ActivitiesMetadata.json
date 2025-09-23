@@ -1,12 +1,7 @@
 {
-  "resourceManagerName": "ProjectName.Resources.Resources",
   "activities": [
     {
       "fullName": "ProjectName.ActivityTemplate",
-      "shortName": "ExampleActivity",
-      "displayNameKey": "ActivityTemplate_DisplayName",
-      "descriptionKey": "ActivityTemplate_Description",
-      "categoryKey": "Examples",
       "viewModelType": "ProjectName.ViewModels.ActivityTemplateViewModel"
     }
   ]

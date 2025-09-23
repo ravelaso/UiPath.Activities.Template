@@ -2,8 +2,10 @@
 using System.Diagnostics;
 using ProjectName.Helpers;
 using UiPath.Robot.Activities.Api;
+using System.ComponentModel;
 
 namespace ProjectName;
+
 public enum Operation
 {
     Add,
@@ -12,7 +14,12 @@ public enum Operation
     Divide
 }
 
+
+
 // This is an example of a calculator, you can see how the interaction between the ViewModel and the Activity class works.
+[DisplayName("Calculator Activity")]
+[Description("This is an example activity")]
+[Category("CustomActivities")]
 public class CalculatorActivity : CodeActivity<int> // This base class exposes an OutArgument named Result
 {
     /*

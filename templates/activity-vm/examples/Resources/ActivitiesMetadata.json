@@ -1,0 +1,8 @@
+{
+  "activities": [
+    {
+      "fullName": "ProjectName.CalculatorActivity",
+      "viewModelType": "ProjectName.ViewModels.CalculatorActivityViewModel"
+    }
+  ]
+}

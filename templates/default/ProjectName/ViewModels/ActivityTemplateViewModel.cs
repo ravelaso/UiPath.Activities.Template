@@ -26,7 +26,6 @@ namespace ProjectName.ViewModels
 
         protected override void InitializeModel()
         {
-             Debugger.Break();
             /*
              * The base call will initialize the properties of the view model with the values from the xaml or with the default values from the activity
              */

@@ -4,7 +4,7 @@
     <OutputType>Library</OutputType>
     <TargetFramework>FameworkParameter</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-	<PackageId>ProjectName.Activities</PackageId>
+	<PackageId>ProjectName</PackageId>
   <VersionBuild>$([System.DateTime]::UtcNow.DayOfYear.ToString("F0"))</VersionBuild>
 	<VersionRevision>$([System.DateTime]::UtcNow.TimeOfDay.TotalMinutes.ToString("F0"))</VersionRevision>
 	<VersionPrefix Condition="'$(Configuration)' == 'Release'">1.0.0</VersionPrefix>
