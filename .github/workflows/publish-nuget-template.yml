@@ -5,10 +5,12 @@ on:
     types:
       - closed
     branches: ["master"]
+  workflow_dispatch:
 jobs:
-  if_merged:
-    if: github.event.pull_request.merged == true || github.event_name == 'push'
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - name: Update
         run: sudo apt update
@@ -16,7 +18,7 @@ jobs:
       - name: Install xmllint & mono
         run: sudo apt install -y libxml2-utils mono-complete --fix-missing
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       
       - uses: nuget/setup-nuget@v1
         with:
@@ -31,6 +33,12 @@ jobs:
 
       - name: Create package
         run: nuget pack Ravelaso.UiPath.Template.nuspec -version ${{ steps.version.outputs.version }}
-        
+      
+      - name: NuGet login (OIDC)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ravelaso
+
       - name: Publish package
-        run: nuget push *.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}
+        run: nuget push *.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{steps.login.outputs.NUGET_API_KEY}}
